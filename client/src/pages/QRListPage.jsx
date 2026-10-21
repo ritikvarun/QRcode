@@ -145,7 +145,7 @@ export default function QRListPage({
           </div>
           <input
             type="text"
-            placeholder="Search by title, destination, folder, or short ID..."
+            placeholder="Search by title, website, or short ID..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-xs sm:text-sm placeholder-slate-500 transition-all"
@@ -163,18 +163,6 @@ export default function QRListPage({
             <option value="">All Statuses</option>
             <option value="active">Active Only</option>
             <option value="disabled">Paused Only</option>
-          </select>
-
-          {/* Folder Filter */}
-          <select
-            value={folderFilter}
-            onChange={(e) => setFolderFilter(e.target.value)}
-            className="px-3 py-2 rounded-xl bg-slate-950 border border-slate-800 text-slate-300 text-xs focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all cursor-pointer"
-          >
-            <option value="">All Folders</option>
-            {uniqueFolders.map((f) => (
-              <option key={f} value={f}>{f}</option>
-            ))}
           </select>
 
           <button

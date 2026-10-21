@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { X, Sparkles, Link as LinkIcon, Folder, ShieldCheck, Loader2 } from 'lucide-react';
+import { X, Sparkles, Link as LinkIcon, ShieldCheck, Loader2 } from 'lucide-react';
 import { qrApi } from '../services/api';
 
 export default function CreateQRModal({ isOpen, onClose, onSuccess, onShowToast }) {
   const [title, setTitle] = useState('');
   const [destinationUrl, setDestinationUrl] = useState('');
   const [addLater, setAddLater] = useState(false);
-  const [folder, setFolder] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -19,7 +18,7 @@ export default function CreateQRModal({ isOpen, onClose, onSuccess, onShowToast 
       return;
     }
     if (!addLater && !destinationUrl.trim()) {
-      setError('Please enter a destination URL or check "Add Destination URL Later"');
+      setError('Please enter a website URL or check "Add Website URL Later"');
       return;
     }
 
@@ -30,7 +29,6 @@ export default function CreateQRModal({ isOpen, onClose, onSuccess, onShowToast 
         title: title.trim(),
         destinationUrl: addLater ? '' : destinationUrl.trim(),
         addLater,
-        folder: folder.trim() || 'No Folder',
       });
 
       if (res.success) {
@@ -52,7 +50,6 @@ export default function CreateQRModal({ isOpen, onClose, onSuccess, onShowToast 
     setTitle('');
     setDestinationUrl('');
     setAddLater(false);
-    setFolder('');
     setError('');
     onClose();
   };
@@ -89,22 +86,22 @@ export default function CreateQRModal({ isOpen, onClose, onSuccess, onShowToast 
 
           <div>
             <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-              QR Code Title / Book Name *
+              QR Code Title *
             </label>
             <input
               type="text"
               required
-              placeholder=""
+              placeholder="Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm transition-all"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm placeholder-slate-500 transition-all"
             />
           </div>
 
           <div>
             <div className="flex items-center justify-between mb-1.5">
               <label className="block text-xs font-semibold text-slate-300">
-                Destination Website URL {addLater ? '(Optional - Add Later)' : '*'}
+                Website URL {addLater ? '(Optional - Add Later)' : '*'}
               </label>
             </div>
 
@@ -115,10 +112,10 @@ export default function CreateQRModal({ isOpen, onClose, onSuccess, onShowToast 
               <input
                 type="text"
                 disabled={addLater}
-                placeholder=""
+                placeholder="New Website"
                 value={addLater ? '' : destinationUrl}
                 onChange={(e) => setDestinationUrl(e.target.value)}
-                className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm transition-all font-mono text-xs sm:text-sm ${
+                className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm placeholder-slate-500 transition-all font-mono text-xs sm:text-sm ${
                   addLater ? 'opacity-50 cursor-not-allowed bg-slate-900' : 'focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500'
                 }`}
               />
@@ -134,24 +131,6 @@ export default function CreateQRModal({ isOpen, onClose, onSuccess, onShowToast 
               />
               <span>I don't have the final website link yet (Print QR in book now, add link later)</span>
             </label>
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-              Folder / Category (Optional)
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
-                <Folder className="h-4 w-4" />
-              </div>
-              <input
-                type="text"
-                placeholder=""
-                value={folder}
-                onChange={(e) => setFolder(e.target.value)}
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm transition-all"
-              />
-            </div>
           </div>
 
           {/* Guarantee Banner */}

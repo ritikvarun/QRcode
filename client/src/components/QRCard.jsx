@@ -247,15 +247,11 @@ export default function QRCard({
               </div>
             </div>
 
-            {/* Metadata: Date and Folder */}
+            {/* Metadata: Date */}
             <div className="mt-4 flex items-center gap-4 text-xs text-slate-400 flex-wrap">
               <div className="flex items-center gap-1.5">
                 <Clock className="h-3.5 w-3.5 text-slate-500" />
                 <span>{formattedDate}</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <Folder className="h-3.5 w-3.5 text-slate-500" />
-                <span>{qr.folder || 'No Folder'}</span>
               </div>
             </div>
           </div>

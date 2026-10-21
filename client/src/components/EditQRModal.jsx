@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { X, Edit3, Link as LinkIcon, Folder, AlertCircle, Loader2, CheckCircle2 } from 'lucide-react';
+import { X, Edit3, Link as LinkIcon, Loader2, CheckCircle2 } from 'lucide-react';
 import { qrApi } from '../services/api';
 
 export default function EditQRModal({ qr, isOpen, onClose, onSuccess, onShowToast }) {
   const [title, setTitle] = useState('');
   const [destinationUrl, setDestinationUrl] = useState('');
-  const [folder, setFolder] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -13,7 +12,6 @@ export default function EditQRModal({ qr, isOpen, onClose, onSuccess, onShowToas
     if (qr) {
       setTitle(qr.title || '');
       setDestinationUrl(qr.destinationUrl || '');
-      setFolder(qr.folder || 'No Folder');
       setError('');
     }
   }, [qr]);
@@ -27,7 +25,7 @@ export default function EditQRModal({ qr, isOpen, onClose, onSuccess, onShowToas
       return;
     }
     if (!destinationUrl.trim()) {
-      setError('Destination URL cannot be empty');
+      setError('Website URL cannot be empty');
       return;
     }
 
@@ -37,13 +35,12 @@ export default function EditQRModal({ qr, isOpen, onClose, onSuccess, onShowToas
       const res = await qrApi.update(qr._id, {
         title: title.trim(),
         destinationUrl: destinationUrl.trim(),
-        folder: folder.trim() || 'No Folder',
       });
 
       if (res.success) {
         onShowToast?.({
           type: 'success',
-          message: `Destination URL updated for "${res.data.title}"`,
+          message: `Website URL updated for "${res.data.title}"`,
         });
         onSuccess?.(res.data);
         onClose();
@@ -65,7 +62,7 @@ export default function EditQRModal({ qr, isOpen, onClose, onSuccess, onShowToas
               <Edit3 className="h-4 w-4" />
             </div>
             <div>
-              <h2 className="text-base font-bold text-white">Edit Destination URL</h2>
+              <h2 className="text-base font-bold text-white">Edit Website URL</h2>
               <p className="text-xs text-slate-400">Updates target without regenerating the printed QR code</p>
             </div>
           </div>
@@ -99,21 +96,21 @@ export default function EditQRModal({ qr, isOpen, onClose, onSuccess, onShowToas
 
           <div>
             <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-              QR Code Title
+              QR Code Title *
             </label>
             <input
               type="text"
               required
-              placeholder=""
+              placeholder="Title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm transition-all"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm placeholder-slate-500 transition-all"
             />
           </div>
 
           <div>
             <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-              New Destination URL *
+              Website URL *
             </label>
             <div className="relative">
               <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
@@ -124,26 +121,8 @@ export default function EditQRModal({ qr, isOpen, onClose, onSuccess, onShowToas
                 required
                 value={destinationUrl}
                 onChange={(e) => setDestinationUrl(e.target.value)}
-                placeholder=""
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm font-mono text-xs sm:text-sm transition-all"
-              />
-            </div>
-          </div>
-
-          <div>
-            <label className="block text-xs font-semibold text-slate-300 mb-1.5">
-              Folder / Category
-            </label>
-            <div className="relative">
-              <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-slate-500">
-                <Folder className="h-4 w-4" />
-              </div>
-              <input
-                type="text"
-                placeholder=""
-                value={folder}
-                onChange={(e) => setFolder(e.target.value)}
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm transition-all"
+                placeholder="New Website"
+                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm font-mono text-xs sm:text-sm placeholder-slate-500 transition-all"
               />
             </div>
           </div>
@@ -172,7 +151,7 @@ export default function EditQRModal({ qr, isOpen, onClose, onSuccess, onShowToas
               className="px-5 py-2 text-xs sm:text-sm font-semibold text-white bg-indigo-600 hover:bg-indigo-500 rounded-xl shadow-lg shadow-indigo-600/30 transition-all flex items-center gap-2 disabled:opacity-50"
             >
               {loading && <Loader2 className="h-4 w-4 animate-spin" />}
-              {loading ? 'Saving Changes...' : 'Save New Destination'}
+              {loading ? 'Saving Changes...' : 'Save New Website URL'}
             </button>
           </div>
         </form>

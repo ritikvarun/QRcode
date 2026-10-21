@@ -128,21 +128,12 @@ export default function QRDetailsModal({ qr, isOpen, onClose, onShowToast }) {
                 </div>
               </div>
 
-              {/* Status & Folder */}
-              <div className="grid grid-cols-2 gap-2 text-xs">
-                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
-                  <span className="text-slate-400 block mb-1">Status</span>
-                  <span className={`font-semibold ${qr.status === 'active' ? 'text-emerald-400' : 'text-amber-400'}`}>
-                    ● {qr.status === 'active' ? 'Active & Live' : 'Paused'}
-                  </span>
-                </div>
-                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800">
-                  <span className="text-slate-400 block mb-1">Folder</span>
-                  <span className="text-slate-200 font-medium flex items-center gap-1 truncate">
-                    <Folder className="h-3 w-3 text-slate-400" />
-                    {qr.folder || 'No Folder'}
-                  </span>
-                </div>
+              {/* Status */}
+              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs">
+                <span className="text-slate-400 block mb-1">Status</span>
+                <span className={`font-semibold ${qr.status === 'active' ? 'text-emerald-400' : 'text-amber-400'}`}>
+                  ● {qr.status === 'active' ? 'Active & Live' : 'Paused'}
+                </span>
               </div>
 
               {/* Permanent Redirect URL */}
