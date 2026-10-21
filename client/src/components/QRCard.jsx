@@ -1,25 +1,25 @@
 import React, { useState } from 'react';
-import { 
-  Download, 
-  ExternalLink, 
-  Link as LinkIcon, 
-  CornerDownRight, 
-  Clock, 
-  Folder, 
-  Edit3, 
-  Copy, 
-  Trash2, 
-  Palette, 
-  Check, 
+import {
+  Download,
+  ExternalLink,
+  Link as LinkIcon,
+  CornerDownRight,
+  Clock,
+  Folder,
+  Edit3,
+  Copy,
+  Trash2,
+  Palette,
+  Check,
   HelpCircle,
   TrendingUp
 } from 'lucide-react';
 
-export default function QRCard({ 
-  qr, 
-  onToggleStatus, 
-  onEdit, 
-  onDelete, 
+export default function QRCard({
+  qr,
+  onToggleStatus,
+  onEdit,
+  onDelete,
   onViewDetails,
   onShowToast,
   isSelected,
@@ -76,12 +76,11 @@ export default function QRCard({
   };
 
   return (
-    <div className={`relative bg-slate-900/90 hover:bg-slate-900 border rounded-2xl p-5 md:p-6 transition-all duration-200 shadow-lg hover:shadow-xl ${
-      isSelected ? 'border-emerald-500/80 ring-1 ring-emerald-500/50' : 'border-slate-800 hover:border-slate-700'
-    }`}>
+    <div className={`relative bg-slate-900/90 hover:bg-slate-900 border rounded-2xl p-5 md:p-6 transition-all duration-200 shadow-lg hover:shadow-xl ${isSelected ? 'border-emerald-500/80 ring-1 ring-emerald-500/50' : 'border-slate-800 hover:border-slate-700'
+      }`}>
       {/* 3-Column Responsive Grid */}
       <div className="flex flex-col md:flex-row items-stretch gap-6">
-        
+
         {/* Left Column: Checkbox, QR Code Image, Download Button */}
         <div className="flex flex-col items-center justify-between border-b md:border-b-0 md:border-r border-slate-800/80 pb-6 md:pb-0 md:pr-6 md:w-56 shrink-0">
           <div className="w-full flex items-center justify-start mb-2">
@@ -93,7 +92,7 @@ export default function QRCard({
             />
           </div>
 
-          <div 
+          <div
             onClick={() => onViewDetails?.(qr)}
             className="group relative cursor-pointer bg-white p-3 rounded-xl shadow-md border border-slate-200 transition-transform hover:scale-105"
             title="Click to view full preview & analytics"
@@ -152,14 +151,12 @@ export default function QRCard({
                 disabled={isToggling}
                 role="switch"
                 aria-checked={isActive}
-                className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-900 ${
-                  isActive ? 'bg-emerald-500' : 'bg-slate-700'
-                } ${isToggling ? 'opacity-50 cursor-not-allowed' : ''}`}
+                className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 focus:ring-offset-slate-900 ${isActive ? 'bg-emerald-500' : 'bg-slate-700'
+                  } ${isToggling ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
                 <span
-                  className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out ${
-                    isActive ? 'translate-x-5' : 'translate-x-0'
-                  }`}
+                  className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out ${isActive ? 'translate-x-5' : 'translate-x-0'
+                    }`}
                 />
               </button>
 
@@ -167,9 +164,9 @@ export default function QRCard({
                 <span className={`font-semibold ${isActive ? 'text-emerald-400' : 'text-slate-400'}`}>
                   {isActive ? 'Active' : 'Inactive'}
                 </span>
-                <HelpCircle 
-                  className="h-3.5 w-3.5 text-slate-500 cursor-help" 
-                  title={isActive ? 'QR code is live and redirecting visitors' : 'QR code is paused and displays an inactive notification'} 
+                <HelpCircle
+                  className="h-3.5 w-3.5 text-slate-500 cursor-help"
+                  title={isActive ? 'QR code is live and redirecting visitors' : 'QR code is paused and displays an inactive notification'}
                 />
               </div>
             </div>
@@ -186,7 +183,7 @@ export default function QRCard({
             </div>
 
             {/* Bold Title */}
-            <h3 
+            <h3
               onClick={() => onViewDetails?.(qr)}
               className="text-lg md:text-xl font-bold text-white hover:text-indigo-300 transition-colors cursor-pointer truncate"
               title={qr.title}
@@ -259,7 +256,7 @@ export default function QRCard({
           {/* Bottom Right Action Icons */}
           <div className="mt-6 pt-4 border-t border-slate-800/80 flex items-center justify-between sm:justify-end gap-2">
             <span className="text-[11px] text-slate-500 sm:hidden">Actions:</span>
-            
+
             <div className="flex items-center gap-1">
               {/* Preview & Style Modal */}
               <button

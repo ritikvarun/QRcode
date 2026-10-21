@@ -5,13 +5,10 @@ import {
   ExternalLink, 
   Copy, 
   Check, 
-  Clock, 
   TrendingUp, 
   Link as LinkIcon, 
   CornerDownRight, 
-  Printer, 
-  Activity,
-  Folder
+  Printer
 } from 'lucide-react';
 
 export default function QRDetailsModal({ qr, isOpen, onClose, onShowToast }) {
@@ -50,7 +47,7 @@ export default function QRDetailsModal({ qr, isOpen, onClose, onShowToast }) {
           <style>
             body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; margin: 0; text-align: center; }
             img { width: 320px; height: 320px; }
-            h2 { margin: 16px 0 6px; font-size: 24px; }
+            h2 { margin: 16px 0 6px; font-size: 24px; color: #111; }
             p { color: #666; font-size: 14px; margin: 0; }
             .url { font-family: monospace; color: #111; margin-top: 8px; }
           </style>
@@ -69,17 +66,17 @@ export default function QRDetailsModal({ qr, isOpen, onClose, onShowToast }) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-fade-in">
-      <div className="relative w-full max-w-2xl bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm animate-fade-in">
+      <div className="relative w-full max-w-2xl bg-white border border-slate-200 rounded-2xl shadow-2xl overflow-hidden">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-800">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
           <div>
-            <h2 className="text-base font-bold text-white truncate max-w-md">{qr.title}</h2>
-            <p className="text-xs text-slate-400">Dynamic QR Preview & Performance</p>
+            <h2 className="text-base font-bold text-slate-900 truncate max-w-md">{qr.title}</h2>
+            <p className="text-xs text-slate-500">Dynamic QR Preview & Performance</p>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg hover:bg-slate-800 text-slate-400 hover:text-white transition-colors"
+            className="p-1 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-700 transition-colors"
           >
             <X className="h-5 w-5" />
           </button>
@@ -88,8 +85,8 @@ export default function QRDetailsModal({ qr, isOpen, onClose, onShowToast }) {
         {/* Content Body */}
         <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* QR Image Box */}
-          <div className="flex flex-col items-center justify-center p-6 bg-slate-950/80 border border-slate-800/80 rounded-2xl">
-            <div className="bg-white p-4 rounded-xl shadow-lg border border-slate-200">
+          <div className="flex flex-col items-center justify-center p-6 bg-slate-50 border border-slate-200 rounded-2xl">
+            <div className="bg-white p-4 rounded-xl shadow-xs border border-slate-200">
               <img
                 src={qr.qrDataUrl}
                 alt={qr.title}
@@ -100,13 +97,13 @@ export default function QRDetailsModal({ qr, isOpen, onClose, onShowToast }) {
             <div className="mt-4 flex items-center gap-2 w-full">
               <button
                 onClick={handleDownload}
-                className="flex-1 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs flex items-center justify-center gap-2 shadow-md transition-colors"
+                className="flex-1 py-2 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-xs flex items-center justify-center gap-2 shadow-xs transition-colors"
               >
                 <Download className="h-4 w-4" /> Download PNG
               </button>
               <button
                 onClick={handlePrint}
-                className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs border border-slate-700 transition-colors"
+                className="p-2 rounded-xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs transition-colors"
                 title="Print QR Code"
               >
                 <Printer className="h-4 w-4" />
@@ -118,42 +115,42 @@ export default function QRDetailsModal({ qr, isOpen, onClose, onShowToast }) {
           <div className="flex flex-col justify-between space-y-4">
             <div className="space-y-3">
               {/* Scan Count Metric Card */}
-              <div className="p-4 rounded-xl bg-indigo-950/20 border border-indigo-900/40 flex items-center justify-between">
+              <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between">
                 <div>
-                  <span className="text-xs text-indigo-300 font-medium block">Total Scans Recorded</span>
-                  <span className="text-3xl font-extrabold text-white">{qr.scanCount || 0}</span>
+                  <span className="text-xs text-slate-500 font-medium block">Total Scans Recorded</span>
+                  <span className="text-3xl font-extrabold text-slate-900">{qr.scanCount || 0}</span>
                 </div>
-                <div className="h-10 w-10 rounded-xl bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+                <div className="h-10 w-10 rounded-xl bg-slate-200/60 flex items-center justify-center text-slate-700">
                   <TrendingUp className="h-5 w-5" />
                 </div>
               </div>
 
               {/* Status */}
-              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs">
-                <span className="text-slate-400 block mb-1">Status</span>
-                <span className={`font-semibold ${qr.status === 'active' ? 'text-emerald-400' : 'text-amber-400'}`}>
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                <span className="text-slate-500 block mb-1">Status</span>
+                <span className={`font-semibold ${qr.status === 'active' ? 'text-emerald-600' : 'text-amber-600'}`}>
                   ● {qr.status === 'active' ? 'Active & Live' : 'Paused'}
                 </span>
               </div>
 
               {/* Permanent Redirect URL */}
-              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs">
-                <span className="text-slate-400 block mb-1">Permanent Dynamic URL:</span>
-                <div className="flex items-center justify-between gap-2 font-mono text-emerald-400 bg-emerald-950/30 p-2 rounded-lg border border-emerald-900/40">
-                  <span className="truncate">{qr.shortUrl}</span>
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                <span className="text-slate-500 block mb-1">Permanent Dynamic URL:</span>
+                <div className="flex items-center justify-between gap-2 font-mono text-emerald-800 bg-emerald-50 p-2 rounded-lg border border-emerald-200">
+                  <span className="truncate font-medium">{qr.shortUrl}</span>
                   <div className="flex items-center gap-1 shrink-0">
                     <button
                       onClick={handleCopyLink}
-                      className="p-1 hover:text-white transition-colors"
+                      className="p-1 hover:text-emerald-950 transition-colors"
                       title="Copy URL"
                     >
-                      {copied ? <Check className="h-3.5 w-3.5 text-emerald-400" /> : <Copy className="h-3.5 w-3.5" />}
+                      {copied ? <Check className="h-3.5 w-3.5 text-emerald-600" /> : <Copy className="h-3.5 w-3.5" />}
                     </button>
                     <a
                       href={qr.shortUrl}
                       target="_blank"
                       rel="noreferrer"
-                      className="p-1 hover:text-white transition-colors"
+                      className="p-1 hover:text-emerald-950 transition-colors"
                       title="Test URL"
                     >
                       <ExternalLink className="h-3.5 w-3.5" />
@@ -163,22 +160,26 @@ export default function QRDetailsModal({ qr, isOpen, onClose, onShowToast }) {
               </div>
 
               {/* Destination URL */}
-              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs">
-                <span className="text-slate-400 block mb-1">Current Target Destination:</span>
-                <a
-                  href={qr.destinationUrl}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="font-mono text-slate-200 hover:text-indigo-400 break-all transition-colors flex items-start gap-1"
-                >
-                  <CornerDownRight className="h-3.5 w-3.5 text-slate-500 shrink-0 mt-0.5" />
-                  {qr.destinationUrl}
-                </a>
+              <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-xs">
+                <span className="text-slate-500 block mb-1">Current Target Destination:</span>
+                {qr.destinationUrl ? (
+                  <a
+                    href={qr.destinationUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-mono text-slate-800 hover:text-indigo-600 font-medium break-all transition-colors flex items-start gap-1"
+                  >
+                    <CornerDownRight className="h-3.5 w-3.5 text-slate-400 shrink-0 mt-0.5" />
+                    {qr.destinationUrl}
+                  </a>
+                ) : (
+                  <span className="text-amber-600 font-medium">Not configured yet</span>
+                )}
               </div>
             </div>
 
             {/* Timestamps */}
-            <div className="pt-2 border-t border-slate-800 text-[11px] text-slate-500 flex items-center justify-between">
+            <div className="pt-2 border-t border-slate-100 text-[11px] text-slate-400 flex items-center justify-between">
               <span>Created: {new Date(qr.createdAt).toLocaleDateString()}</span>
               <span>Last scanned: {qr.lastScannedAt ? new Date(qr.lastScannedAt).toLocaleDateString() : 'Never'}</span>
             </div>

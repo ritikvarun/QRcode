@@ -1,11 +1,11 @@
 import React from 'react';
-import { 
-  QrCode, 
-  LayoutDashboard, 
-  ListFilter, 
-  PlusCircle, 
-  User as UserIcon, 
-  LogOut, 
+import {
+  QrCode,
+  LayoutDashboard,
+  ListFilter,
+  PlusCircle,
+  User as UserIcon,
+  LogOut,
   Sparkles,
   ExternalLink,
   ShieldCheck
@@ -25,7 +25,7 @@ export default function Sidebar({ currentTab, setCurrentTab, onOpenCreate, isOpe
     <>
       {/* Mobile Backdrop */}
       {isOpen && (
-        <div 
+        <div
           onClick={onClose}
           className="fixed inset-0 z-30 bg-slate-950/70 backdrop-blur-sm lg:hidden"
         />
@@ -33,9 +33,8 @@ export default function Sidebar({ currentTab, setCurrentTab, onOpenCreate, isOpe
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between transition-transform duration-300 ease-in-out lg:translate-x-0 ${
-          isOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`fixed top-0 bottom-0 left-0 z-40 w-64 bg-slate-900 border-r border-slate-800 flex flex-col justify-between transition-transform duration-300 ease-in-out lg:translate-x-0 ${isOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
       >
         <div>
           {/* Brand Header */}
@@ -79,11 +78,10 @@ export default function Sidebar({ currentTab, setCurrentTab, onOpenCreate, isOpe
                     setCurrentTab(item.id);
                     onClose?.();
                   }}
-                  className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-colors ${
-                    isActive
+                  className={`w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-colors ${isActive
                       ? 'bg-indigo-600/15 text-indigo-400 border border-indigo-500/30'
                       : 'text-slate-400 hover:text-slate-200 hover:bg-slate-800/60'
-                  }`}
+                    }`}
                 >
                   <Icon className={`h-4 w-4 ${isActive ? 'text-indigo-400' : 'text-slate-400'}`} />
                   <span>{item.label}</span>
