@@ -1,0 +1,21 @@
+{
+  "name": "dynamic-qr-code-root",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Dynamic QR Code Creator - MERN Stack Monorepo",
+  "scripts": {
+    "server": "npm --prefix server run dev",
+    "server:start": "npm --prefix server run start",
+    "client": "npm --prefix client run dev",
+    "client:build": "npm --prefix client run build",
+    "install:all": "npm --prefix server install && npm --prefix client install"
+  },
+  "keywords": [
+    "mern",
+    "dynamic-qr",
+    "react",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC"
+}
