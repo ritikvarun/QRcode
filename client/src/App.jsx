@@ -34,10 +34,10 @@ function DashboardApp() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-950 text-slate-100 flex items-center justify-center">
+      <div className="min-h-screen bg-slate-50 text-slate-900 flex items-center justify-center">
         <div className="flex flex-col items-center gap-3">
-          <RefreshCw className="h-6 w-6 animate-spin text-indigo-400" />
-          <span className="text-xs text-slate-400">Loading Dynamic QR Studio...</span>
+          <RefreshCw className="h-6 w-6 animate-spin text-slate-900" />
+          <span className="text-xs text-slate-600 font-medium">Loading Dynamic QR Studio...</span>
         </div>
       </div>
     );
@@ -63,7 +63,7 @@ function DashboardApp() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex">
       {/* Sidebar Navigation */}
       <Sidebar
         currentTab={currentTab}
