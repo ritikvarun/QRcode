@@ -104,9 +104,10 @@ export default function EditQRModal({ qr, isOpen, onClose, onSuccess, onShowToas
             <input
               type="text"
               required
+              placeholder=""
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm placeholder-slate-500 transition-all"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm transition-all"
             />
           </div>
 
@@ -123,8 +124,8 @@ export default function EditQRModal({ qr, isOpen, onClose, onSuccess, onShowToas
                 required
                 value={destinationUrl}
                 onChange={(e) => setDestinationUrl(e.target.value)}
-                placeholder="https://example.com/new-destination"
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm font-mono text-xs sm:text-sm placeholder-slate-500 transition-all"
+                placeholder=""
+                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm font-mono text-xs sm:text-sm transition-all"
               />
             </div>
           </div>
@@ -139,9 +140,10 @@ export default function EditQRModal({ qr, isOpen, onClose, onSuccess, onShowToas
               </div>
               <input
                 type="text"
+                placeholder=""
                 value={folder}
                 onChange={(e) => setFolder(e.target.value)}
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm placeholder-slate-500 transition-all"
+                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm transition-all"
               />
             </div>
           </div>

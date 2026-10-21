@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { X, Sparkles, Link as LinkIcon, Folder, ShieldCheck, Loader2, BookOpen } from 'lucide-react';
+import { X, Sparkles, Link as LinkIcon, Folder, ShieldCheck, Loader2 } from 'lucide-react';
 import { qrApi } from '../services/api';
 
 export default function CreateQRModal({ isOpen, onClose, onSuccess, onShowToast }) {
   const [title, setTitle] = useState('');
   const [destinationUrl, setDestinationUrl] = useState('');
   const [addLater, setAddLater] = useState(false);
-  const [folder, setFolder] = useState('No Folder');
+  const [folder, setFolder] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
 
@@ -15,7 +15,7 @@ export default function CreateQRModal({ isOpen, onClose, onSuccess, onShowToast 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title.trim()) {
-      setError('Please provide a title (e.g. Book Name, Chapter, or Subject)');
+      setError('Please provide a title');
       return;
     }
     if (!addLater && !destinationUrl.trim()) {
@@ -52,7 +52,7 @@ export default function CreateQRModal({ isOpen, onClose, onSuccess, onShowToast 
     setTitle('');
     setDestinationUrl('');
     setAddLater(false);
-    setFolder('No Folder');
+    setFolder('');
     setError('');
     onClose();
   };
@@ -94,10 +94,10 @@ export default function CreateQRModal({ isOpen, onClose, onSuccess, onShowToast 
             <input
               type="text"
               required
-              placeholder="e.g. Educazone Class 9 - Chapter 1 Solutions"
+              placeholder=""
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm placeholder-slate-500 transition-all"
+              className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm transition-all"
             />
           </div>
 
@@ -115,10 +115,10 @@ export default function CreateQRModal({ isOpen, onClose, onSuccess, onShowToast 
               <input
                 type="text"
                 disabled={addLater}
-                placeholder={addLater ? "You can set the final link later anytime from the dashboard" : "https://www.educazonebooks.com/class-9"}
+                placeholder=""
                 value={addLater ? '' : destinationUrl}
                 onChange={(e) => setDestinationUrl(e.target.value)}
-                className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm placeholder-slate-500 transition-all font-mono text-xs sm:text-sm ${
+                className={`w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-white text-sm transition-all font-mono text-xs sm:text-sm ${
                   addLater ? 'opacity-50 cursor-not-allowed bg-slate-900' : 'focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500'
                 }`}
               />
@@ -146,10 +146,10 @@ export default function CreateQRModal({ isOpen, onClose, onSuccess, onShowToast 
               </div>
               <input
                 type="text"
-                placeholder="e.g. Class 9, Textbooks, Math, Science"
+                placeholder=""
                 value={folder}
                 onChange={(e) => setFolder(e.target.value)}
-                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm placeholder-slate-500 transition-all"
+                className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 text-white text-sm transition-all"
               />
             </div>
           </div>
