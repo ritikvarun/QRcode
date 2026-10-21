@@ -117,23 +117,14 @@ export default function QRListPage({
 
   return (
     <div className="space-y-6 animate-fade-in">
-      {/* Title & Filter Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
-            QR Code Directory
-          </h2>
-          <p className="text-xs text-slate-400 mt-1">
-            Manage your dynamic targets, update URLs in real-time, and download print-ready PNGs
-          </p>
-        </div>
-
-        <button
-          onClick={onOpenCreate}
-          className="px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/25 transition-all self-start md:self-auto"
-        >
-          <Plus className="h-4 w-4" /> Create QR Code
-        </button>
+      {/* Title Header */}
+      <div>
+        <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+          QR Code Directory
+        </h2>
+        <p className="text-xs text-slate-400 mt-1">
+          Manage your dynamic targets, update URLs in real-time, and download print-ready PNGs
+        </p>
       </div>
 
       {/* Search and Filters Bar */}
