@@ -51,9 +51,6 @@ export default function LoginPage() {
           <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
             Dynamic QR Studio
           </h1>
-          <p className="text-slate-500 text-xs sm:text-sm mt-1.5 font-medium">
-            Admin Management for Books & Physical Media
-          </p>
         </div>
 
         {/* Card */}
@@ -77,7 +74,7 @@ export default function LoginPage() {
                 <input
                   type="email"
                   required
-                  placeholder=""
+                  placeholder="Email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="w-full pl-10 pr-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 text-slate-900 text-sm transition-all"
@@ -96,7 +93,7 @@ export default function LoginPage() {
                 <input
                   type={showPassword ? 'text' : 'password'}
                   required
-                  placeholder=""
+                  placeholder="Password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   className="w-full pl-10 pr-10 py-2.5 rounded-xl bg-slate-50 border border-slate-200 focus:bg-white focus:border-slate-900 focus:ring-1 focus:ring-slate-900 text-slate-900 text-sm transition-all font-mono"
