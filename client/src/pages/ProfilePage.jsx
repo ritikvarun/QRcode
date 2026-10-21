@@ -33,8 +33,8 @@ export default function ProfilePage() {
               <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 text-[11px] font-semibold mb-1">
                 <ShieldCheck className="h-3 w-3" /> Master Administrator
               </div>
-              <h3 className="text-lg font-bold text-slate-900">{user?.name || 'Super Admin'}</h3>
-              <p className="text-xs text-slate-500">{user?.email || 'admin@dynamicqr.local'}</p>
+              <h3 className="text-lg font-bold text-slate-900">{user?.name || 'Ritik Varun'}</h3>
+              <p className="text-xs text-slate-500">{user?.email || 'ritikvarun64@gamil.com'}</p>
             </div>
           </div>
 
@@ -57,7 +57,7 @@ export default function ProfilePage() {
               <Mail className="h-4 w-4 text-slate-600" />
               <span>Registered Email</span>
             </div>
-            <span className="text-slate-900 font-semibold">{user?.email || 'admin@dynamicqr.local'}</span>
+            <span className="text-slate-900 font-semibold">{user?.email || 'ritikvarun64@gamil.com'}</span>
           </div>
 
           <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 flex items-center justify-between text-xs">

@@ -13,39 +13,49 @@ const isDBConnected = () => mongoose.connection.readyState === 1;
  * Seed initial Admin user if no admin exists
  */
 export const seedAdminIfEmpty = async () => {
-  const adminEmail = (process.env.ADMIN_INITIAL_EMAIL || 'admin@dynamicqr.local').toLowerCase().trim();
-  const adminPassword = process.env.ADMIN_INITIAL_PASSWORD || 'Admin@123456';
+  const primaryEmail = (process.env.ADMIN_INITIAL_EMAIL || 'ritikvarun64@gamil.com').toLowerCase().trim();
+  const adminPassword = process.env.ADMIN_INITIAL_PASSWORD || 'Ritik@1234';
+
+  const emailsToSeed = [primaryEmail];
+  if (primaryEmail === 'ritikvarun64@gamil.com') {
+    emailsToSeed.push('ritikvarun64@gmail.com');
+  }
 
   if (isDBConnected()) {
-    try {
-      const existing = await User.findOne({ email: adminEmail });
-      if (!existing) {
-        await User.create({
-          name: 'Super Admin',
-          email: adminEmail,
-          password: adminPassword,
-          role: 'admin',
-        });
-        console.log(`👤 [Admin Seeded in MongoDB] Email: ${adminEmail}`);
+    for (const email of emailsToSeed) {
+      try {
+        const existing = await User.findOne({ email });
+        if (!existing) {
+          await User.create({
+            name: 'Ritik Varun',
+            email,
+            password: adminPassword,
+            role: 'admin',
+          });
+          console.log(`👤 [Admin Seeded in MongoDB] Email: ${email}`);
+        } else {
+          existing.password = adminPassword;
+          await existing.save();
+        }
+      } catch (err) {
+        console.error('Error seeding admin in MongoDB:', err.message);
       }
-    } catch (err) {
-      console.error('Error seeding admin in MongoDB:', err.message);
     }
   } else {
-    // In-memory seed
-    if (!memUsers.has(adminEmail)) {
-      const hashedPassword = await bcrypt.hash(adminPassword, 10);
+    // In-memory seed (always update/set so new password takes effect immediately)
+    const hashedPassword = await bcrypt.hash(adminPassword, 10);
+    for (const email of emailsToSeed) {
       const user = {
-        _id: 'admin_mem_001',
-        name: 'Super Admin',
-        email: adminEmail,
+        _id: 'admin_mem_' + email.replace(/[^a-z0-9]/gi, ''),
+        name: 'Ritik Varun',
+        email,
         password: hashedPassword,
         role: 'admin',
         createdAt: new Date(),
         updatedAt: new Date(),
       };
-      memUsers.set(adminEmail, user);
-      console.log(`👤 [Admin Ready in Memory Fallback] Email: ${adminEmail} (password: ${adminPassword})`);
+      memUsers.set(email, user);
+      console.log(`👤 [Admin Ready in Memory Fallback] Email: ${email} (password: ${adminPassword})`);
     }
   }
 };

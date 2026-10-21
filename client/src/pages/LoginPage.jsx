@@ -6,7 +6,6 @@ import {
   ArrowRight, 
   Loader2, 
   AlertCircle, 
-  Sparkles,
   Eye,
   EyeOff
 } from 'lucide-react';
@@ -39,12 +38,6 @@ export default function LoginPage() {
     } finally {
       setLoading(false);
     }
-  };
-
-  const fillDemoCredentials = () => {
-    setEmail('admin@dynamicqr.local');
-    setPassword('Admin@123456');
-    setError('');
   };
 
   return (
@@ -128,21 +121,6 @@ export default function LoginPage() {
               {!loading && <ArrowRight className="h-4 w-4" />}
             </button>
           </form>
-
-          {/* Quick Demo Helper */}
-          <div className="mt-6 pt-5 border-t border-slate-100">
-            <button
-              type="button"
-              onClick={fillDemoCredentials}
-              className="w-full py-2 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-xs text-slate-700 font-medium flex items-center justify-center gap-1.5 transition-colors"
-            >
-              <Sparkles className="h-3.5 w-3.5 text-slate-500" />
-              Auto-Fill Default Admin Credentials
-            </button>
-            <p className="text-[11px] text-slate-400 text-center mt-2 font-mono">
-              admin@dynamicqr.local / Admin@123456
-            </p>
-          </div>
         </div>
       </div>
     </div>

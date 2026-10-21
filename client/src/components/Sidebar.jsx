@@ -99,8 +99,8 @@ export default function Sidebar({ currentTab, setCurrentTab, onOpenCreate, isOpe
                 {user?.name?.[0]?.toUpperCase() || 'A'}
               </div>
               <div className="truncate">
-                <div className="text-xs font-semibold text-slate-900 truncate">{user?.name || 'Admin'}</div>
-                <div className="text-[10px] text-slate-500 truncate">{user?.email || 'admin@dynamicqr.local'}</div>
+                <div className="text-xs font-semibold text-slate-900 truncate">{user?.name || 'Ritik Varun'}</div>
+                <div className="text-[10px] text-slate-500 truncate">{user?.email || 'ritikvarun64@gamil.com'}</div>
               </div>
             </div>
 
